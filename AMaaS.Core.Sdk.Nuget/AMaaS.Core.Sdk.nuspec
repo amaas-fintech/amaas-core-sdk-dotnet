@@ -2,7 +2,7 @@
 <package >
   <metadata>
     <id>Amaas.Core</id>
-    <version>1.0.10</version>
+    <version>1.0.13</version>
     <title>Asset Management as a Service - Core SDK</title>
     <authors>AMaaS</authors>
     <owners>AMaaS</owners>

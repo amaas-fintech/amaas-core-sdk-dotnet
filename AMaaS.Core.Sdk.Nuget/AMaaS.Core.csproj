@@ -43,6 +43,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AMaaS.Core.Sdk.AssetManagers\AMaaS.Core.Sdk.AssetManagers.csproj">
+      <Project>{bc2860b8-b5ae-4a78-9c6c-53df07a32619}</Project>
+      <Name>AMaaS.Core.Sdk.AssetManagers</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AMaaS.Core.Sdk.Assets\AMaaS.Core.Sdk.Assets.csproj">
       <Project>{bf93a402-3bd4-40b9-adfe-b9ab106ee1e9}</Project>
       <Name>AMaaS.Core.Sdk.Assets</Name>

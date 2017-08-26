@@ -9,5 +9,6 @@ namespace AMaaS.Core.Sdk.Constants
     public static class CognitoAttributes
     {
         public const string AssetManagerId = "custom:asset_manager_id";
+        public const string UserName       = "cognito:username";
     }
 }

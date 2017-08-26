@@ -82,7 +82,7 @@ namespace AMaaS.Core.Sdk
                 return null;
 
             object attribute = null;
-            return JwtToken?.Payload?.TryGetValue("custom:asset_manager_id", out attribute) ?? false
+            return JwtToken?.Payload?.TryGetValue(attributeName, out attribute) ?? false
                         ? attribute.ToString() : null;
         }
 
