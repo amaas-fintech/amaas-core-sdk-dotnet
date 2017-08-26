@@ -10,8 +10,7 @@ namespace AMaaS.Core.Sdk
         #region Properties
 
         public abstract string EndpointType { get; }
-        public string AuthorizationToken => Session?.AuthorizationToken;
-        protected AMaaSSession Session { get; }
+        public AMaaSSession Session { get; }
 
         #endregion
 
