@@ -19,7 +19,7 @@ namespace AMaaS.Core.Sdk.Extensions
 
         public static string GetEnumDisplay(this Enum enumVal)
         {
-            return enumVal.GetAttributeOfType<EnumMemberAttribute>().Value;
+            return enumVal.GetAttributeOfType<EnumMemberAttribute>()?.Value ?? enumVal.ToString();
         }
     }
 }
