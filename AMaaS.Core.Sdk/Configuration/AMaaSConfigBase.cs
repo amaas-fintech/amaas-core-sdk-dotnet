@@ -23,6 +23,12 @@ namespace AMaaS.Core.Sdk.Configuration
         public virtual string Password { get; private set; }
         public bool IsInitialized { get; }
 
+        public AMaaSConfigBase(string username, string password, string apiVersion)
+        {
+            Username = username;
+            Password = password;
+        }
+
         public AMaaSConfigBase(string apiVersion)
         {
             if(!IsInitialized)

@@ -19,5 +19,10 @@ namespace AMaaS.Core.Sdk.Configuration
         {
 
         }
+
+        public AMaaSConfigDev(string username, string password, string apiVersion) : base(username, password, apiVersion)
+        {
+
+        }
     }
 }
