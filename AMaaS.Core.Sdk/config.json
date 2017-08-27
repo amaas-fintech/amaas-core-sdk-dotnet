@@ -1,8 +1,0 @@
-﻿{
-  "aws_region": "us-west-2",
-  "cognito_pool_id": "us-west-2_wKa82vECF",
-  "cognito_client_id": "5mrqm1sjmfp80k8foasq83rb9k",
-  "environment": "Dev",
-  "sdk_version":  "v1.0"
-
-}

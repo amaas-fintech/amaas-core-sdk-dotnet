@@ -1,18 +1,13 @@
-﻿using System;
-using System.Text;
-using System.Collections.Generic;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Autofac;
 using AMaaS.Core.Sdk.Configuration;
 using AMaaS.Core.Sdk.Extensions;
+using Autofac;
+using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
+using Xunit;
 
 namespace AMaaS.Core.Sdk.Transactions.Tests
 {
-    /// <summary>
-    /// Summary description for TransactionsInterfaceTests
-    /// </summary>
-    [TestClass]
     public class TransactionsInterfaceTests
     {
         private IContainer _container;
@@ -27,22 +22,22 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
             _container = builder.Build();
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestSearchTransactions()
         {
             var transactionInterface = _container.Resolve<ITransactionsInterface>();
             var results = await transactionInterface.SearchTransactions(assetManagerIds: new List<int> { 1 });
 
-            Assert.IsFalse(results.IsNullOrEmpty());
+            Assert.False(results.IsNullOrEmpty());
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestSearchPositions()
         {
             var transactionInterface = _container.Resolve<ITransactionsInterface>();
             var results = await transactionInterface.SearchPositions(assetManagerIds: new List<int> { 1 });
 
-            Assert.IsFalse(results.IsNullOrEmpty());
+            Assert.False(results.IsNullOrEmpty());
         }
     }
 }

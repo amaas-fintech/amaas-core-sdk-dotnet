@@ -1,13 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Autofac;
+using AMaaS.Core.Sdk;
+using AMaaS.Core.Sdk.AssetManagers;
 using AMaaS.Core.Sdk.Configuration;
-using System.Threading.Tasks;
 using AMaaS.Core.Sdk.Constants;
+using Autofac;
+using System;
+using System.Threading.Tasks;
+using Xunit;
 
-namespace AMaaS.Core.Sdk.AssetManagers.Tests
+namespace AMaaS.Core.AssetManagers.Tests
 {
-    [TestClass]
     public class AssetManagersInterfaceTests
     {
         private IContainer _container;
@@ -22,13 +23,13 @@ namespace AMaaS.Core.Sdk.AssetManagers.Tests
             _container = builder.Build();
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestGetUserRelationships()
         {
             var assetManagerInterface = _container.Resolve<IAssetManagersInterface>();
-            var userAssetManagerId    = await assetManagerInterface.Session?.GetTokenAttribute(CognitoAttributes.AssetManagerId);
-            var relationships         = await assetManagerInterface.GetUserRelationships(int.Parse(userAssetManagerId));
-            Assert.IsNotNull(relationships);
+            var userAssetManagerId = await assetManagerInterface.Session?.GetTokenAttribute(CognitoAttributes.AssetManagerId);
+            var relationships = await assetManagerInterface.GetUserRelationships(int.Parse(userAssetManagerId));
+            Assert.NotNull(relationships);
         }
     }
 }

@@ -114,14 +114,28 @@ namespace AMaaS.Core.Sdk
             builder.Port = -1;
             if (queryParams != null)
             {
-                var query = HttpUtility.ParseQueryString(string.Empty);
+                //There's currently a bug in .NET standard version of HttpUtility
+                //uncomment this once it has been fixed
+                //var query = HttpUtility.ParseQueryString(string.Empty);
+                var query = new System.Collections.Specialized.NameValueCollection();
                 foreach (var kvp in queryParams)
                 {
                     query[kvp.Key] = kvp.Value;
                 }
-                builder.Query = query.ToString();
+                builder.Query = ToQueryString(query);
             }
             return builder.ToString();
+        }
+
+        [Obsolete("Temporary helper method until HttpUtility.ParseQueryString gets fixed in .NET Standard")]
+        private string ToQueryString(System.Collections.Specialized.NameValueCollection query)
+        {
+            var items = new List<string>();
+
+            foreach (string name in query)
+                items.Add(string.Concat(name, "=", System.Net.WebUtility.UrlEncode(query[name])));
+
+            return string.Join("&amp;", items.ToArray());
         }
         #endregion
     }

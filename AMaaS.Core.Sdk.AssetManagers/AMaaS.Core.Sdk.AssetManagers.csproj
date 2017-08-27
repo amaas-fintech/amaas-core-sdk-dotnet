@@ -1,61 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{BC2860B8-B5AE-4A78-9C6C-53DF07A32619}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>AMaaS.Core.Sdk.AssetManagers</RootNamespace>
-    <AssemblyName>AMaaS.Core.Sdk.AssetManagers</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
+    <PackageId>Amaas.Core.AssetManagers</PackageId>
+    <Authors>AMaaS</Authors>
+    <Company>AMaaS</Company>
+    <Product>Amaas.Core.AssetManagers</Product>
+    <Description>AMaaS - Asset Manager Models and API clients.</Description>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
+    <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
+    <PackageTags>AMaaS AssetManagers</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <Version>1.1.2</Version>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-  </PropertyGroup>
+
   <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.Xml" />
+    <ProjectReference Include="..\AMaaS.Core.Sdk\AMaaS.Core.Sdk.csproj" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="AssetManagersInterface.cs" />
-    <Compile Include="Enums\RelationshipStatus.cs" />
-    <Compile Include="Enums\RelationshipType.cs" />
-    <Compile Include="IAssetManagersInterface.cs" />
-    <Compile Include="Models\Relationship.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\AMaaS.Core.Sdk\AMaaS.Core.Sdk.csproj">
-      <Project>{b4f330ee-c573-417d-997a-cc5212f32aee}</Project>
-      <Name>AMaaS.Core.Sdk</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="app.config" />
-  </ItemGroup>
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
 </Project>
