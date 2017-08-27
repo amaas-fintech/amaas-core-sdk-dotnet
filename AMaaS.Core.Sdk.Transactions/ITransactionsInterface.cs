@@ -37,6 +37,8 @@ namespace AMaaS.Core.Sdk.Transactions
             List<string> bookIds = null,
             List<string> accountIds = null,
             List<string> accountingTypes = null,
-            List<string> assetIds = null);
+            List<string> assetIds = null,
+            int? pageNo = null,
+            int? pageSize = null);
     }
 }

@@ -102,7 +102,9 @@ namespace AMaaS.Core.Sdk.Transactions
             List<string> bookIds = null, 
             List<string> accountIds = null, 
             List<string> accountingTypes = null, 
-            List<string> assetIds = null)
+            List<string> assetIds = null,
+            int? pageNo = null,
+            int? pageSize = null)
         {
             var queryParams = new Dictionary<string, string>();
 
@@ -114,6 +116,10 @@ namespace AMaaS.Core.Sdk.Transactions
                 queryParams.Add("book_ids", bookIds.StringJoin());
             if (!accountIds.IsNullOrEmpty())
                 queryParams.Add("account_ids", accountIds.StringJoin());
+            if (pageNo.HasValue)
+                queryParams.Add("page_no", pageNo.ToString());
+            if (pageSize.HasValue)
+                queryParams.Add("page_size", pageSize.ToString());
 
             accountingTypes = accountingTypes.IsNullOrEmpty() 
                                 ? new List<string> { AccountingType.TransactionDate.GetEnumDisplay() } 
