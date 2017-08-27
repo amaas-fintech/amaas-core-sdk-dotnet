@@ -6,7 +6,8 @@ namespace AMaaS.Core.Sdk.Constants
 {
     public static class EndpointTypes
     {
-        public const string Transactions = "transaction";
-        public const string Assets = "asset";
+        public const string Transactions  = "transaction";
+        public const string Assets        = "asset";
+        public const string AssetManagers = "assetmanager";
     }
 }

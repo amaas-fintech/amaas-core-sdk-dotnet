@@ -7,6 +7,6 @@ namespace AMaaS.Core.Sdk.Contracts
     public interface IAMaaSInterface
     {
         string EndpointType { get; }
-        string AuthorizationToken { get; }
+        AMaaSSession Session { get; }
     }
 }

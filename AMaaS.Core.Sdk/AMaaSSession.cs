@@ -7,11 +7,11 @@ using Amazon.Runtime;
 using Amazon;
 using Amazon.Extensions.CognitoAuthentication;
 using System.Net.Http.Headers;
-using AMaaSConstants = AMaaS.Core.Sdk.Constants;
 using Newtonsoft.Json;
 using System.Web;
 using AMaaS.Core.Sdk.Models.Utils;
 using AMaaS.Core.Sdk.Configuration;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace AMaaS.Core.Sdk
 {
@@ -28,8 +28,9 @@ namespace AMaaS.Core.Sdk
         #region Properties
 
         public IAMaaSConfiguration Config { get; }
-        public bool IsAuthenticated => !string.IsNullOrEmpty(AuthorizationToken);
-        public string AuthorizationToken { get; private set; }
+        public bool   IsAuthenticated => !string.IsNullOrEmpty(IdToken);
+        public string IdToken { get; private set; }
+        public JwtSecurityToken JwtToken { get; set; }
 
         #endregion
 
@@ -39,7 +40,6 @@ namespace AMaaS.Core.Sdk
         /// 
         /// </summary>
         /// <param name="config"></param>
-        /// <param name="container"></param>
         public AMaaSSession(IAMaaSConfiguration config)
         {
             Config = config;
@@ -66,10 +66,24 @@ namespace AMaaS.Core.Sdk
             }).ConfigureAwait(false);
 
             _lastAuthenticatedTime = DateTime.Now;
-            AuthorizationToken     = context.AuthenticationResult.IdToken;
+            IdToken                = context.AuthenticationResult.IdToken;
+            JwtToken               = new JwtSecurityTokenHandler().ReadJwtToken(IdToken);
+
             _httpClient.DefaultRequestHeaders.Accept.Clear();
             _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(AuthorizationToken);
+            _httpClient.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue(IdToken);
+        }
+
+        public async Task<string> GetTokenAttribute(string attributeName)
+        {
+            await _initialization;
+
+            if (JwtToken == null)
+                return null;
+
+            object attribute = null;
+            return JwtToken?.Payload?.TryGetValue(attributeName, out attribute) ?? false
+                        ? attribute.ToString() : null;
         }
 
         public async Task<TResult> GetAsync<TResult>(string route, Dictionary<string,string> queryParams = null)
@@ -77,10 +91,10 @@ namespace AMaaS.Core.Sdk
             await _initialization;
 
             var uri = BuildUri(route, queryParams);
-            var response = await _httpClient.GetAsync(uri);
+            var response = await _httpClient.GetAsync(uri).ConfigureAwait(false);
             response.EnsureSuccessStatusCode();
 
-            var jsonBody = await response.Content.ReadAsStringAsync();
+            var jsonBody = await response.Content.ReadAsStringAsync().ConfigureAwait(false);
             return JsonConvert.DeserializeObject<TResult>(jsonBody, SerializationUtils.SnakeCaseSettings);
         }
 
@@ -100,14 +114,28 @@ namespace AMaaS.Core.Sdk
             builder.Port = -1;
             if (queryParams != null)
             {
-                var query = HttpUtility.ParseQueryString(string.Empty);
+                //There's currently a bug in .NET standard version of HttpUtility
+                //uncomment this once it has been fixed
+                //var query = HttpUtility.ParseQueryString(string.Empty);
+                var query = new System.Collections.Specialized.NameValueCollection();
                 foreach (var kvp in queryParams)
                 {
                     query[kvp.Key] = kvp.Value;
                 }
-                builder.Query = query.ToString();
+                builder.Query = ToQueryString(query);
             }
             return builder.ToString();
+        }
+
+        [Obsolete("Temporary helper method until HttpUtility.ParseQueryString gets fixed in .NET Standard")]
+        private string ToQueryString(System.Collections.Specialized.NameValueCollection query)
+        {
+            var items = new List<string>();
+
+            foreach (string name in query)
+                items.Add(string.Concat(name, "=", System.Net.WebUtility.UrlEncode(query[name])));
+
+            return string.Join("&amp;", items.ToArray());
         }
         #endregion
     }

@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using System.Threading.Tasks;
-using Autofac;
+using AMaaS.Core.Sdk;
+using AMaaS.Core.Sdk.Assets;
 using AMaaS.Core.Sdk.Configuration;
-using System.Collections.Generic;
 using AMaaS.Core.Sdk.Extensions;
+using Autofac;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Xunit;
 
-namespace AMaaS.Core.Sdk.Assets.Tests
+namespace AMaaS.Core.Assets.Tests
 {
-    [TestClass]
     public class AssetsInterfaceTests
     {
         private IContainer _container;
@@ -23,13 +23,13 @@ namespace AMaaS.Core.Sdk.Assets.Tests
             _container = builder.Build();
         }
 
-        [TestMethod]
+        [Fact]
         public async Task TestSearchAssets()
         {
             var assetsInterface = _container.Resolve<IAssetsInterface>();
-            var results         = await assetsInterface.SearchAssets(assetManagerIds: new List<int> { 1 }, pageNo: 1, pageSize: 5);
+            var results = await assetsInterface.SearchAssets(assetManagerIds: new List<int> { 1 }, pageNo: 1, pageSize: 5);
 
-            Assert.IsFalse(results.IsNullOrEmpty());
+            Assert.False(results.IsNullOrEmpty());
         }
     }
 }

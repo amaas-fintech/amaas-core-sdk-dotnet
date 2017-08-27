@@ -29,13 +29,25 @@ namespace AMaaS.Core.Sdk.Configuration
             {
                 var userHome    = System.Environment.GetFolderPath(System.Environment.SpecialFolder.UserProfile);
                 var amaasConfig = Path.Combine(userHome, ConfigurationKeys.AMaaSConfigFile);
-                var parser      = new FileIniDataParser();
-                var data        = parser.ReadFile(amaasConfig);
 
-                Username        = data[ConfigurationKeys.AuthSection][ConfigurationKeys.Username];
-                Password        = data[ConfigurationKeys.AuthSection][ConfigurationKeys.Password];
-                ApiVersion      = apiVersion;
-                IsInitialized   = true;
+                if (!File.Exists(amaasConfig))
+                    throw new ApplicationException($"Missing configuration file: {amaasConfig}");
+
+                var parser = new FileIniDataParser();
+                var data = parser.ReadFile(amaasConfig);
+
+                if (!data.Sections.ContainsSection(ConfigurationKeys.AuthSection))
+                    throw new ApplicationException($"Missing section [{ConfigurationKeys.AuthSection}] in {amaasConfig}");
+
+                if (!data[ConfigurationKeys.AuthSection].ContainsKey(ConfigurationKeys.Username) ||
+                    !data[ConfigurationKeys.AuthSection].ContainsKey(ConfigurationKeys.Password))
+                    throw new ApplicationException($"Missing credentials in {amaasConfig}. {ConfigurationKeys.Username} and {ConfigurationKeys.Password} are required.");
+
+                Username = data[ConfigurationKeys.AuthSection][ConfigurationKeys.Username];
+                Password = data[ConfigurationKeys.AuthSection][ConfigurationKeys.Password];
+
+                ApiVersion    = apiVersion;
+                IsInitialized = true;
             }
         }
     }

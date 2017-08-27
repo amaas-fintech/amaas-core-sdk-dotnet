@@ -38,11 +38,13 @@ namespace AMaaS.Core.Sdk.Assets.Models
         #endregion
 
         #region Constructor
+
         public Asset() : base()
         {
             if (!References.ContainsKey(AMaaSConstants.DefaultReference))
                 References.Add(AMaaSConstants.DefaultReference, new Reference { ReferenceValue = AssetId });
         }
+
         #endregion
     }
 }
