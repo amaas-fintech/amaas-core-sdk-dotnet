@@ -21,7 +21,6 @@ namespace AMaaS.Core.Sdk
 
         private DateTime   _lastAuthenticatedTime;
         private HttpClient _httpClient;
-        private Task       _initialization;
 
         #endregion
 
@@ -30,6 +29,7 @@ namespace AMaaS.Core.Sdk
         public IAMaaSConfiguration Config { get; }
         public bool   IsAuthenticated => !string.IsNullOrEmpty(IdToken);
         public string IdToken { get; private set; }
+        public Task Initialization { get; private set; }
         public JwtSecurityToken JwtToken { get; set; }
 
         #endregion
@@ -42,27 +42,27 @@ namespace AMaaS.Core.Sdk
         /// <param name="config"></param>
         public AMaaSSession(IAMaaSConfiguration config)
         {
-            Config = config;
+            Config      = config;
             _httpClient = new HttpClient();
 
-            if (_initialization == null)
-                _initialization = LoginAsync();
+            if (Initialization == null)
+                Initialization = LoginAsync();
         }
 
         #endregion
 
         #region Methods
 
-        private async Task LoginAsync()
+        private async Task LoginAsync(string username = null, string password = null)
         {
             var region   = RegionEndpoint.GetBySystemName(Config?.AwsRegion);
             var provider = new AmazonCognitoIdentityProviderClient(new AnonymousAWSCredentials(), region);
             var userPool = new CognitoUserPool(Config.CognitoPoolId, Config.CognitoClientId, provider);
-            var user     = new CognitoUser(Config?.Username, Config?.CognitoClientId, userPool, provider);
+            var user     = new CognitoUser(username ?? Config?.Username, Config?.CognitoClientId, userPool, provider);
 
             var context = await user.StartWithSrpAuthAsync(new InitiateSrpAuthRequest()
             {
-                Password = Config?.Password
+                Password = password ?? Config?.Password
             }).ConfigureAwait(false);
 
             _lastAuthenticatedTime = DateTime.Now;
@@ -76,7 +76,7 @@ namespace AMaaS.Core.Sdk
 
         public async Task<string> GetTokenAttribute(string attributeName)
         {
-            await _initialization;
+            await Initialization;
 
             if (JwtToken == null)
                 return null;
@@ -88,7 +88,7 @@ namespace AMaaS.Core.Sdk
 
         public async Task<TResult> GetAsync<TResult>(string route, Dictionary<string,string> queryParams = null)
         {
-            await _initialization;
+            await Initialization;
 
             var uri = BuildUri(route, queryParams);
             var response = await _httpClient.GetAsync(uri).ConfigureAwait(false);
