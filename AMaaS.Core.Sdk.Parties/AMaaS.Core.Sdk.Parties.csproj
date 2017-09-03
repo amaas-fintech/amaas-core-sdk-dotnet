@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <PackageId>Amaas.Core.Parties</PackageId>
+    <Authors>AMaaS</Authors>
+    <Company>AMaaS</Company>
+    <Product>Amaas.Core.Parties</Product>
+    <Description>AMaaS - Asset Manager Models and API clients.</Description>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
+    <PackageProjectUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</PackageProjectUrl>
+    <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
+    <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
+    <PackageTags>AMaaS Parties</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AMaaS.Core.Sdk\AMaaS.Core.Sdk.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+
+</Project>

@@ -21,6 +21,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMaaS.Core.Sdk.Transactions
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AMaaS.Core.Sdk.Tests", "Tests\AMaaS.Core.Sdk.Tests\AMaaS.Core.Sdk.Tests.csproj", "{571C750D-6411-4F0E-B138-795CE7C24598}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AMaaS.Core.Sdk.Parties", "AMaaS.Core.Sdk.Parties\AMaaS.Core.Sdk.Parties.csproj", "{392C7670-0DB1-4B83-8E49-A612309C0513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -59,6 +61,10 @@ Global
 		{571C750D-6411-4F0E-B138-795CE7C24598}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{571C750D-6411-4F0E-B138-795CE7C24598}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{571C750D-6411-4F0E-B138-795CE7C24598}.Release|Any CPU.Build.0 = Release|Any CPU
+		{392C7670-0DB1-4B83-8E49-A612309C0513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{392C7670-0DB1-4B83-8E49-A612309C0513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{392C7670-0DB1-4B83-8E49-A612309C0513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{392C7670-0DB1-4B83-8E49-A612309C0513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

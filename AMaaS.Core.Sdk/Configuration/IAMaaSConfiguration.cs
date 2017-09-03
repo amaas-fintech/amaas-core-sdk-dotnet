@@ -10,9 +10,9 @@ namespace AMaaS.Core.Sdk.Configuration
         string CognitoPoolId { get; }
         string CognitoClientId { get; }
         string AwsRegion { get; }
-        string Username { get; }
-        string Password { get; }
-        AMaaSEnvironment Environment { get; }
+        string Username { get; set; }
+        string Password { get; set; }
+        AMaaSEnvironment Environment { get; set; }
         Uri Endpoint { get; }
         string ApiVersion { get; }
         bool IsInitialized { get; }
