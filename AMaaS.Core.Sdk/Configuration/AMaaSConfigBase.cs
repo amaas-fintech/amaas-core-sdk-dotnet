@@ -16,17 +16,18 @@ namespace AMaaS.Core.Sdk.Configuration
         public abstract string CognitoPoolId { get; }
         public abstract string CognitoClientId { get; }
         public abstract string AwsRegion { get; }
-        public abstract AMaaSEnvironment Environment { get; }
+        public abstract AMaaSEnvironment Environment { get; set; }
         public virtual string ApiVersion { get; }
         public virtual Uri Endpoint => new Uri(Endpoints.Uris[Environment], ApiVersion);
-        public virtual string Username { get; private set; }
-        public virtual string Password { get; private set; }
+        public virtual string Username { get; set; }
+        public virtual string Password { get; set; }
         public bool IsInitialized { get; }
 
         public AMaaSConfigBase(string username, string password, string apiVersion)
         {
-            Username = username;
-            Password = password;
+            Username   = username;
+            Password   = password;
+            ApiVersion = apiVersion;
         }
 
         public AMaaSConfigBase(string apiVersion)
