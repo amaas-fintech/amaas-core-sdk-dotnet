@@ -14,6 +14,7 @@ namespace AMaaS.Core.Sdk.Assets.Enums
         Derivative,
         Equity,
         ForeignExchange,
+        Fund,
         Future,
         Index,
         ListedDerivative,

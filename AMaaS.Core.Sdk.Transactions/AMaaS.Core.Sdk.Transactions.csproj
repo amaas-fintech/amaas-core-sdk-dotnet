@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Amaas.Core.Transactions</PackageId>
-    <Version>1.1.2</Version>
+    <Version>1.1.4</Version>
     <Authors>AMaaS</Authors>
     <Company>AMaaS</Company>
     <Product>Amaas.Core.Transactions</Product>

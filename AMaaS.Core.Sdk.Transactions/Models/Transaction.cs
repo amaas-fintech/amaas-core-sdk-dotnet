@@ -20,7 +20,7 @@ namespace AMaaS.Core.Sdk.Transactions.Models
 
         public int AssetManagerId { get; set; }
         public string AssetBookId { get; set; }
-        public string CounterPartyBookId { get; set; }
+        public string CounterpartyBookId { get; set; }
         public TransactionAction TransactionAction { get; set; } = TransactionAction.Buy;
         public string AssetId { get; set; }
         public decimal Quantity { get; set; }
