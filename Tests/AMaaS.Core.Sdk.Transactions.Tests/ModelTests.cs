@@ -61,7 +61,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
                 SettlementCurrency = "USD",
                 TransactionCurrency = "USD",
                 TransactionAction = TransactionAction.ShortSell,
-                Parties = new Dictionary<string, Party> { { "CounterParty", new Party { PartyId = "P123", Version = 2 } } }
+                Parties = new Dictionary<string, Party> { { "Counterparty", new Party { PartyId = "P123", Version = 2 } } }
             };
             var jsonTransaction = SerializationUtils.ToJson(transaction1);
             var transaction2 = SerializationUtils.FromJson<Transaction>(jsonTransaction);
