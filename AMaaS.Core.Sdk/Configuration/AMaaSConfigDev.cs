@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AMaaS.Core.Sdk.Enums;
-using AMaaS.Core.Sdk.Constants;
+﻿using AMaaS.Core.Sdk.Enums;
 
 namespace AMaaS.Core.Sdk.Configuration
 {
@@ -24,7 +18,8 @@ namespace AMaaS.Core.Sdk.Configuration
 
         }
 
-        public AMaaSConfigDev(string username, string password, string apiVersion) : base(username, password, apiVersion)
+        public AMaaSConfigDev(string username, string password, string apiVersion) : 
+            base(username, password, apiVersion)
         {
 
         }
