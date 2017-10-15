@@ -26,10 +26,10 @@ namespace AMaaS.Core.Sdk.Assets
 
         #endregion
 
-        #region
+        #region Methods
         
         public async Task<IEnumerable<Asset>> SearchAssets(
-            List<int> assetManagerIds = null,
+            int assetManagerId,
             List<string> assetIds = null,
             List<string> assetClasses = null,
             List<string> assetTypes = null,
@@ -37,8 +37,6 @@ namespace AMaaS.Core.Sdk.Assets
             int? pageSize = null)
         {
             var queryParams = new Dictionary<string, string>();
-            if (!assetManagerIds.IsNullOrEmpty())
-                queryParams.Add("asset_manager_ids", assetManagerIds.StringJoin());
             if (!assetIds.IsNullOrEmpty())
                 queryParams.Add("asset_ids", assetIds.StringJoin());
             if (!assetClasses.IsNullOrEmpty())
@@ -49,7 +47,7 @@ namespace AMaaS.Core.Sdk.Assets
                 queryParams.Add("page_no", pageNo.ToString());
             if (pageSize.HasValue)
                 queryParams.Add("page_size", pageSize.ToString());
-            return await Session.GetAsync<List<Asset>>($"{EndpointType}/assets", queryParams);
+            return await Session.GetAsync<List<Asset>>($"{EndpointType}/assets/{assetManagerId}", queryParams);
         }
         #endregion
     }

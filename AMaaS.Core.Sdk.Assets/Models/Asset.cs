@@ -39,10 +39,10 @@ namespace AMaaS.Core.Sdk.Assets.Models
 
         #region Constructor
 
-        public Asset() : base()
+        public Asset()
         {
             if (!References.ContainsKey(AMaaSConstants.DefaultReference))
-                References.Add(AMaaSConstants.DefaultReference, new Reference { ReferenceValue = AssetId });
+                References.Add(AMaaSConstants.DefaultReference, new Reference { ReferenceValue = AssetId, ReferencePrimary = true });
         }
 
         #endregion

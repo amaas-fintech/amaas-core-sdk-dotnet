@@ -15,7 +15,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
         public TransactionsInterfaceTests()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(new AMaaSConfigDev("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
+            builder.RegisterInstance(new AMaaSConfigStaging("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
             builder.RegisterType<AMaaSSession>().SingleInstance();
             builder.RegisterType<TransactionsInterface>().As<ITransactionsInterface>().InstancePerLifetimeScope();
 
@@ -26,7 +26,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
         public async Task TestSearchTransactions()
         {
             var transactionInterface = _container.Resolve<ITransactionsInterface>();
-            var results = await transactionInterface.SearchTransactions(assetManagerIds: new List<int> { 1 });
+            var results = await transactionInterface.SearchTransactions(123);
 
             Assert.False(results.IsNullOrEmpty());
         }
@@ -35,7 +35,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
         public async Task TestSearchPositions()
         {
             var transactionInterface = _container.Resolve<ITransactionsInterface>();
-            var results = await transactionInterface.SearchPositions(assetManagerIds: new List<int> { 1 });
+            var results = await transactionInterface.SearchPositions(123);
 
             Assert.False(results.IsNullOrEmpty());
         }
