@@ -10,7 +10,7 @@ namespace AMaaS.Core.Sdk.Transactions
     public interface ITransactionsInterface : IAMaaSInterface
     {
         Task<IEnumerable<Transaction>> SearchTransactions(
-            List<int> assetManagerIds = null,
+            int assetManagerId,
             List<string> transactionIds = null,
             List<string> transactionStatuses = null,
             List<string> assetBookIds = null,
@@ -32,8 +32,8 @@ namespace AMaaS.Core.Sdk.Transactions
             int? pageSize = null);
 
         Task<IEnumerable<Position>> SearchPositions(
+            int assetManagerId,
             DateTime? positionDate = null,
-            List<int> assetManagerIds = null,
             List<string> bookIds = null,
             List<string> accountIds = null,
             List<string> accountingTypes = null,

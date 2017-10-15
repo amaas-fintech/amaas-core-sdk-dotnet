@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Amaas.Core</PackageId>
-    <Version>1.1.8</Version>
+    <Version>1.1.9</Version>
     <Authors>AMaaS</Authors>
     <Company>AMaaS</Company>
     <Product>Amaas.Core</Product>
@@ -21,8 +21,8 @@
     <PackageReference Include="AWSSDK.Extensions.CognitoAuthentication" Version="0.9.1" />
     <PackageReference Include="ini-parser" Version="2.5.2" />
     <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
-    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.1.4" />
-    <PackageReference Include="System.Net.Http" Version="4.3.2" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.2.0-preview1-408290725" />
+    <PackageReference Include="System.Net.Http" Version="4.3.3" />
   </ItemGroup>
 
 </Project>

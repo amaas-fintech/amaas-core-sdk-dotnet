@@ -11,7 +11,7 @@ namespace AMaaS.Core.Sdk.Assets
     public interface IAssetsInterface : IAMaaSInterface
     {
         Task<IEnumerable<Asset>> SearchAssets(
-            List<int> assetManagerIds = null,
+            int assetManagerId,
             List<string> assetIds = null,
             List<string> assetClasses = null,
             List<string> assetTypes = null,

@@ -9,6 +9,7 @@ namespace AMaaS.Core.Sdk.Models
         #region Properties
 
         public string ReferenceValue { get; set; }
+        public bool ReferencePrimary { get; set; }
 
         #endregion
     }

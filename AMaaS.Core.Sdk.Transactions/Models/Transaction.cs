@@ -73,10 +73,10 @@ namespace AMaaS.Core.Sdk.Transactions.Models
 
         #region Constructor
 
-        public Transaction() : base()
+        public Transaction()
         {
             if (!References.ContainsKey(AMaaSConstants.DefaultReference))
-                References.Add(AMaaSConstants.DefaultReference, new Reference { ReferenceValue = TransactionId });
+                References.Add(AMaaSConstants.DefaultReference, new Reference { ReferenceValue = TransactionId, ReferencePrimary = true });
         }
         #endregion
     }

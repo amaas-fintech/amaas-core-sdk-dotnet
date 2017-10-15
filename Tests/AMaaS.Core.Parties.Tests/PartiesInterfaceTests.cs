@@ -1,5 +1,5 @@
 using AMaaS.Core.Sdk;
-using AMaaS.Core.Sdk.Assets;
+using AMaaS.Core.Sdk.Parties;
 using AMaaS.Core.Sdk.Configuration;
 using AMaaS.Core.Sdk.Extensions;
 using Autofac;
@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
 
-namespace AMaaS.Core.Assets.Tests
+namespace AMaaS.Core.Parties.Tests
 {
     public class AssetsInterfaceTests
     {
@@ -18,16 +18,16 @@ namespace AMaaS.Core.Assets.Tests
             var builder = new ContainerBuilder();
             builder.RegisterInstance(new AMaaSConfigStaging("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
             builder.RegisterType<AMaaSSession>().SingleInstance();
-            builder.RegisterType<AssetsInterface>().As<IAssetsInterface>().InstancePerLifetimeScope();
+            builder.RegisterType<PartiesInterface>().As<IPartiesInterface>().InstancePerLifetimeScope();
 
             _container = builder.Build();
         }
 
         [Fact]
-        public async Task TestSearchAssets()
+        public async Task TestSearchParties()
         {
-            var assetsInterface = _container.Resolve<IAssetsInterface>();
-            var results = await assetsInterface.SearchAssets(123, pageNo: 1, pageSize: 5);
+            var partiesInterface = _container.Resolve<IPartiesInterface>();
+            var results = await partiesInterface.SearchParties(123);
 
             Assert.False(results.IsNullOrEmpty());
         }

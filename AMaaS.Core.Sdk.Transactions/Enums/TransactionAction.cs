@@ -11,6 +11,8 @@ namespace AMaaS.Core.Sdk.Transactions.Enums
         Sell,
         [EnumMember(Value = "Short Sell")]
         ShortSell,
+        [EnumMember(Value = "Short Cover")]
+        ShortCover,
         Deliver,
         Receive,
         Acquire,

@@ -30,7 +30,7 @@ namespace AMaaS.Core.Sdk.Transactions
         #region Methods
 
         public async Task<IEnumerable<Transaction>> SearchTransactions(
-            List<int> assetManagerIds = null,
+            int assetManagerId,
             List<string> transactionIds = null,
             List<string> transactionStatuses = null,
             List<string> assetBookIds = null,
@@ -52,8 +52,6 @@ namespace AMaaS.Core.Sdk.Transactions
             int? pageSize = null)
         {
             var queryParams = new Dictionary<string, string>();
-            if (!assetManagerIds.IsNullOrEmpty())
-                queryParams.Add("asset_manager_ids", assetManagerIds.StringJoin());
             if (!transactionIds.IsNullOrEmpty())
                 queryParams.Add("transaction_ids", transactionIds.StringJoin());
             if (!transactionStatuses.IsNullOrEmpty())
@@ -93,12 +91,12 @@ namespace AMaaS.Core.Sdk.Transactions
             if (pageSize.HasValue)
                 queryParams.Add("page_size", pageSize.ToString());
             
-            return await Session.GetAsync<List<Transaction>>($"{EndpointType}/transactions", queryParams);
+            return await Session.GetAsync<List<Transaction>>($"{EndpointType}/transactions/{assetManagerId}", queryParams);
         }
 
         public async Task<IEnumerable<Position>> SearchPositions(
+            int assetManagerId,
             DateTime? positionDate = null, 
-            List<int> assetManagerIds = null, 
             List<string> bookIds = null, 
             List<string> accountIds = null, 
             List<string> accountingTypes = null, 
@@ -110,8 +108,6 @@ namespace AMaaS.Core.Sdk.Transactions
 
             if (positionDate.HasValue)
                 queryParams.Add("position_date", positionDate.Value.ToISODateString());
-            if (!assetManagerIds.IsNullOrEmpty())
-                queryParams.Add("asset_manager_ids", assetManagerIds.StringJoin());
             if (!bookIds.IsNullOrEmpty())
                 queryParams.Add("book_ids", bookIds.StringJoin());
             if (!accountIds.IsNullOrEmpty())
@@ -121,11 +117,7 @@ namespace AMaaS.Core.Sdk.Transactions
             if (pageSize.HasValue)
                 queryParams.Add("page_size", pageSize.ToString());
 
-            accountingTypes = accountingTypes.IsNullOrEmpty() 
-                                ? new List<string> { AccountingType.TransactionDate.GetEnumDisplay() } 
-                                : accountingTypes;
-
-            return await Session.GetAsync<List<Position>>($"{EndpointType}/positions", queryParams);
+            return await Session.GetAsync<List<Position>>($"{EndpointType}/positions/{assetManagerId}", queryParams);
         }
 
         #endregion
