@@ -28,6 +28,7 @@ namespace AMaaS.Core.Sdk.Transactions
             List<string> referenceValues = null,
             List<string> clientIds = null,
             List<string> fields = null,
+            List<string> childTypes = null,
             int? pageNo = null,
             int? pageSize = null);
 
