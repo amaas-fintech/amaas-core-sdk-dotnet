@@ -48,6 +48,7 @@ namespace AMaaS.Core.Sdk.Transactions
             List<string> referenceValues = null,
             List<string> clientIds = null,
             List<string> fields = null,
+            List<string> childTypes = null,
             int? pageNo = null,
             int? pageSize = null)
         {
@@ -86,6 +87,8 @@ namespace AMaaS.Core.Sdk.Transactions
                 queryParams.Add("client_ids", clientIds.StringJoin());
             if (!fields.IsNullOrEmpty())
                 queryParams.Add("fields", fields.StringJoin());
+            if (!childTypes.IsNullOrEmpty())
+                queryParams.Add("childTypes", childTypes.StringJoin());
             if (pageNo.HasValue)
                 queryParams.Add("page_no", pageNo.ToString());
             if (pageSize.HasValue)

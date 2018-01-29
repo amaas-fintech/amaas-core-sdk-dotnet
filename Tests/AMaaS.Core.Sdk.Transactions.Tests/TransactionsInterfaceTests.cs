@@ -1,7 +1,7 @@
 using AMaaS.Core.Sdk.Configuration;
 using AMaaS.Core.Sdk.Extensions;
 using Autofac;
-using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Xunit;
@@ -29,6 +29,18 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
             var results = await transactionInterface.SearchTransactions(123);
 
             Assert.False(results.IsNullOrEmpty());
+        }
+
+        [Fact]
+        public async Task TestFieldsSearchTransactions()
+        {
+            var transactionsInterface = _container.Resolve<ITransactionsInterface>();
+            var results = await transactionsInterface.SearchTransactions(assetManagerId: 123,
+                                                                         fields: new List<string> { "asset_manager_id,asset_book_id,quantity"},
+                                                                         assetBookIds: new List<string> { "STRESS4" },
+                                                                         childTypes: new List<string> { "charges" });
+            Assert.False(results.IsNullOrEmpty());
+            Assert.True(results.First().AssetBookId == "STRESS4");
         }
 
         [Fact]
