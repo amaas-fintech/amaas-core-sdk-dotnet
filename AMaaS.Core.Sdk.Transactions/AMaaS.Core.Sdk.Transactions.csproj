@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Amaas.Core.Transactions</PackageId>
-    <Version>1.1.6</Version>
+    <Version>1.1.8</Version>
     <Authors>AMaaS</Authors>
     <Company>AMaaS</Company>
     <Product>Amaas.Core.Transactions</Product>
@@ -14,6 +14,8 @@
     <PackageProjectUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</PackageProjectUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
     <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
+    <AssemblyVersion>1.1.8.0</AssemblyVersion>
+    <FileVersion>1.1.8.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
