@@ -20,7 +20,8 @@ namespace AMaaS.Core.Sdk.Transactions.Enums
         Cashflow,
         Coupon,
         Dividend,
-        Payment
+        Payment,
+        Settlement
     }
 
     public enum CashTransactionType
