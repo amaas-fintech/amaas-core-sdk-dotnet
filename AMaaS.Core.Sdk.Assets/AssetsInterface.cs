@@ -47,7 +47,9 @@ namespace AMaaS.Core.Sdk.Assets
                 queryParams.Add("page_no", pageNo.ToString());
             if (pageSize.HasValue)
                 queryParams.Add("page_size", pageSize.ToString());
-            return await Session.GetAsync<List<Asset>>($"{EndpointType}/assets/search/{assetManagerId}", queryParams);
+
+            var results = await Session.GetAsync<SearchResult>($"{EndpointType}/assets/search/{assetManagerId}", queryParams);
+            return results.Hits;
         }
         #endregion
     }

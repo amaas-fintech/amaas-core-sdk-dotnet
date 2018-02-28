@@ -15,7 +15,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
         {
             var transaction1 = new Transaction
             {
-                AssetManagerId = 123,
+                AssetManagerId = 103,
                 TransactionId = "Tran123",
                 AssetBookId = "Book123",
                 SettlementCurrency = "USD",
@@ -27,7 +27,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
             Assert.Equal(transaction1.GetHashCode(), transaction2.GetHashCode());
             transaction2 = new Transaction
             {
-                AssetManagerId = 123,
+                AssetManagerId = 103,
                 TransactionId = "Tran123",
                 AssetBookId = "Book123",
                 SettlementCurrency = "USD",
@@ -55,7 +55,7 @@ namespace AMaaS.Core.Sdk.Transactions.Tests
         {
             var transaction1 = new Transaction
             {
-                AssetManagerId = 123,
+                AssetManagerId = 103,
                 TransactionId = "Tran123",
                 AssetBookId = "Book123",
                 SettlementCurrency = "USD",

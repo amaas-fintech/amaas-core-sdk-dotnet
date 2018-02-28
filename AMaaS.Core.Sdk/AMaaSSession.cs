@@ -109,7 +109,7 @@ namespace AMaaS.Core.Sdk
 
         private string BuildUri(string route, Dictionary<string, string> queryParams)
         {
-            var address  = $"{Config?.Endpoint}/{route}";
+            var address  = $"{Config?.Endpoint}{route}";
             var builder  = new UriBuilder(address);
             builder.Port = -1;
             if (queryParams != null)

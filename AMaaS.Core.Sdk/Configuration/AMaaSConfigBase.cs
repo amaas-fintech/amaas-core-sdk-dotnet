@@ -13,7 +13,7 @@ namespace AMaaS.Core.Sdk.Configuration
         public abstract string AwsRegion { get; }
         public abstract AMaaSEnvironment Environment { get; set; }
         public virtual string ApiVersion { get; }
-        public virtual Uri Endpoint => new Uri(Endpoints.Uris[Environment], ApiVersion);
+        public virtual Uri Endpoint => Endpoints.Uris[Environment];
         public virtual string Username { get; set; }
         public virtual string Password { get; set; }
         public bool IsInitialized { get; }

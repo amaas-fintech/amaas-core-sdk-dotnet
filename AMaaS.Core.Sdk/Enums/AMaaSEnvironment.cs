@@ -9,11 +9,9 @@ namespace AMaaS.Core.Sdk.Enums
     {
         [EnumMember(Value = "local")]
         Local,
-        [EnumMember(Value = "dev")]
-        Dev,
-        [EnumMember(Value = "staging")]
-        Staging,
-        [EnumMember(Value = "prod")]
-        Prod
+        [EnumMember(Value = "default")]
+        Default,
+        [EnumMember(Value = "live")]
+        Live
     }
 }
