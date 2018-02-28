@@ -16,7 +16,7 @@ namespace AMaaS.Core.Assets.Tests
         public AssetsInterfaceTests()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(new AMaaSConfigStaging("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
+            builder.RegisterInstance(new AMaaSConfigDefault("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
             builder.RegisterType<AMaaSSession>().SingleInstance();
             builder.RegisterType<AssetsInterface>().As<IAssetsInterface>().InstancePerLifetimeScope();
 
@@ -27,7 +27,7 @@ namespace AMaaS.Core.Assets.Tests
         public async Task TestSearchAssets()
         {
             var assetsInterface = _container.Resolve<IAssetsInterface>();
-            var results = await assetsInterface.SearchAssets(123, pageNo: 1, pageSize: 5);
+            var results = await assetsInterface.SearchAssets(102, pageNo: 1, pageSize: 5);
 
             Assert.False(results.IsNullOrEmpty());
         }

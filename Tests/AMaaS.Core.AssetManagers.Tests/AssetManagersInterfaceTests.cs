@@ -16,7 +16,7 @@ namespace AMaaS.Core.AssetManagers.Tests
         public AssetManagersInterfaceTests()
         {
             var builder = new ContainerBuilder();
-            builder.RegisterInstance(new AMaaSConfigDev("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
+            builder.RegisterInstance(new AMaaSConfigDefault("v1.0")).As<IAMaaSConfiguration>().SingleInstance();
             builder.RegisterType<AMaaSSession>().SingleInstance();
             builder.RegisterType<AssetManagersInterface>().As<IAssetManagersInterface>().InstancePerLifetimeScope();
 

@@ -2,19 +2,19 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0;net452</TargetFrameworks>
-    <PackageId>Amaas.Core.Assets</PackageId>
-    <Version>1.1.5</Version>
+    <PackageId>Amaas.Core.Books</PackageId>
     <Authors>AMaaS</Authors>
     <Company>AMaaS</Company>
-    <Product>Amaas.Core.Assets</Product>
-    <Description>AMaaS - Asset Models and API clients.</Description>
+    <Product>Amaas.Core.Books</Product>
+    <Description>AMaaS - Book Models and API clients</Description>
+    <Copyright></Copyright>
     <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0</PackageLicenseUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageProjectUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</PackageProjectUrl>
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
-    <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
-    <PackageTags>AMaaS Assets</PackageTags>
+    <RepositoryUrl>dotnet</RepositoryUrl>
+    <PackageTags>AMaaS Books</PackageTags>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>

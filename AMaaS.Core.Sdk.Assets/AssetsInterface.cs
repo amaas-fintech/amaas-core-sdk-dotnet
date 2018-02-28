@@ -38,16 +38,18 @@ namespace AMaaS.Core.Sdk.Assets
         {
             var queryParams = new Dictionary<string, string>();
             if (!assetIds.IsNullOrEmpty())
-                queryParams.Add("asset_ids", assetIds.StringJoin());
+                queryParams.Add("asset_id", assetIds.StringJoin());
             if (!assetClasses.IsNullOrEmpty())
-                queryParams.Add("assetClasses", assetClasses.StringJoin());
+                queryParams.Add("asset_class", assetClasses.StringJoin());
             if (!assetTypes.IsNullOrEmpty())
-                queryParams.Add("assetTypes", assetTypes.StringJoin());
+                queryParams.Add("asset_type", assetTypes.StringJoin());
             if (pageNo.HasValue)
                 queryParams.Add("page_no", pageNo.ToString());
             if (pageSize.HasValue)
                 queryParams.Add("page_size", pageSize.ToString());
-            return await Session.GetAsync<List<Asset>>($"{EndpointType}/assets/{assetManagerId}", queryParams);
+
+            var results = await Session.GetAsync<SearchResult>($"{EndpointType}/assets/search/{assetManagerId}", queryParams);
+            return results.Hits;
         }
         #endregion
     }

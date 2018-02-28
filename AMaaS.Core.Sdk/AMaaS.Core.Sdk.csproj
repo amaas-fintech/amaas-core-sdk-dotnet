@@ -5,7 +5,7 @@
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <PackageId>Amaas.Core</PackageId>
-    <Version>1.1.9</Version>
+    <Version>1.2.0</Version>
     <Authors>AMaaS</Authors>
     <Company>AMaaS</Company>
     <Product>Amaas.Core</Product>
@@ -15,6 +15,8 @@
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
     <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
     <PackageTags>AssetManagement AMaaS</PackageTags>
+    <AssemblyVersion>1.2.0.0</AssemblyVersion>
+    <FileVersion>1.2.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
