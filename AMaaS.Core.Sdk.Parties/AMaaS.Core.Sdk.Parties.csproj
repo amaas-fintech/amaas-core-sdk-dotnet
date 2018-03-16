@@ -12,8 +12,10 @@
     <PackageIconUrl>https://avatars0.githubusercontent.com/u/25190661</PackageIconUrl>
     <RepositoryUrl>http://github.com/amaas-fintech/amaas-core-sdk-dotnet</RepositoryUrl>
     <PackageTags>AMaaS Parties</PackageTags>
-    <Version>1.0.1</Version>
+    <Version>2.0.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <AssemblyVersion>2.0.0.0</AssemblyVersion>
+    <FileVersion>2.0.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

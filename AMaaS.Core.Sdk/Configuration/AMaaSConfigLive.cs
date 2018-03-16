@@ -4,12 +4,12 @@ namespace AMaaS.Core.Sdk.Configuration
 {
     public class AMaaSConfigLive : AMaaSConfigBase
     {
-        public override string CognitoPoolId => "ap-southeast-1_yoy5sStQz";
-        public override string CognitoClientId => "5l4953h3l5klj0ir9klqhod0rn";
+        public override string CognitoPoolId => "ap-southeast-1_XlXESdzaC";
+        public override string CognitoClientId => "2nl3v2vgivcrooiah804kjqrbm";
         public override string AwsRegion => "ap-southeast-1";
         public override AMaaSEnvironment Environment
         {
-            get { return AMaaSEnvironment.Default; }
+            get { return AMaaSEnvironment.Live; }
             set { }
         }
 
